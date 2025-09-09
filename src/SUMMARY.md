@@ -6,6 +6,7 @@
 - [Setting expectations](./chapter-1/setting-expectations.md)
 
 # Why Self-Host?
+- [Public Cloud Pitfalls](./chapter-2/public-cloud-pitfalls.md)
 - [Problems with free tiers](./chapter-2/problems-free-tiers.md)
 - [Problems with "budget" DBs](./chapter-2/problems-budget-dbs.md)
 - [My self-hosting journey](./chapter-2/my-journey.md)
@@ -17,15 +18,16 @@
 - [Choosing your hardware](./chapter-3/choosing-hardware.md)
 - [Choosing your software](./chapter-3/choosing-software.md)
 - [Setting up your Server](./chapter-3/server-setup.md)
-  - [Housekeeping](./chapter-3/server-setup/housekeeping.md)
-  - [Server Hardening](./chapter-3/server-setup/server-hardening.md)
+  - [Server Hardening](./chapter-3/server-setup/hardening.md)
+  - [SSH](./chapter-3/server-setup/ssh.md)
   - [Installing Docker and Docker Swarm](./chapter-3/server-setup/docker.md)
+- [Section Recap](./chapter-3/section-recap.md)
 
 # Making It Public
-- [Why not port-forward](./chapter-4/no-port-forward.md)
-- [Cloudflare Tunnels explained](./chapter-4/cloudflare-tunnels-explained.md)
-- [Setting up a Cloudflare account](./chapter-4/cloudflare-account.md)
-- [Creating a Cloudflare Tunnel + DNS](./chapter-4/cloudflare-tunnel-dns.md)
+- [Why not port-forward?](./chapter-4/no-port-forward.md)
+- [Cloudflare Tunnels](./chapter-4/cloudflare-tunnels.md)
+- [Setting up a Cloudflare account + DNS](./chapter-4/cloudflare-account-and-dns.md)
+- [Creating a Cloudflare Tunnel](./chapter-4/cloudflare-tunnel-setup.md)
 - [Free SSL via Cloudflare](./chapter-4/free-ssl.md)
 
 # Hosting All the Things

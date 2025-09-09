@@ -1,6 +1,6 @@
 # Choosing your software
 
-Before you even think about apps, services, or Docker containers, you’ll need to pick the foundation your setup will run on: the operating system (OS). For self-hosting, the clear winner is Linuxi, it’s the backbone of most servers worldwide, and for good reason.
+Before you even think about apps, services, or Docker containers, you’ll need to pick the foundation your setup will run on: the operating system (OS). For self-hosting, the clear winner is Linux, it’s the backbone of most servers worldwide, and for good reason.
 
 ## Why Linux is the Go-To for Self-Hosting
 I won’t provide an exhaustive list here (a quick Google search will give you a lot more supportive arguments to back me up on this). Instead, I’ll just highlight the key reasons why Linux is the best choice. 
@@ -23,7 +23,7 @@ When it comes to self-hosting, you don’t need to look far: [Debian](https://ww
 
 - **Ubuntu:** Built on Debian but geared toward user-friendliness. It comes with newer software, better hardware support out of the box, and huge amounts of community documentation. If you’re new to Linux or just want something that “just works,” Ubuntu is hard to beat.
 
-Throughout this book, assume that we're working with a Debian/Ubuntu system. This is because the Linux distro I installed on my mini PC is [Linux Mint](https://linuxmint.com/), another beginner-friendly distro based on Ubuntu.
+Throughout this book, assume that we're working with a Debian/Ubuntu system. This is because the most servers and tutorials use some Debian-based distro, and the Linux distro I installed on my mini PC is [Linux Mint](https://linuxmint.com/), another beginner-friendly distro built on Ubuntu. If your distro is based on RHEL, you can always look up the equivalent commands / guides, especially since package management and GPG key handling differ.
 
 ### Alternatives (for Advanced Users)
 

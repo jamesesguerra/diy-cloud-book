@@ -16,10 +16,13 @@ Here’s why it makes sense:
 - **Can double as an everyday computer**  
     Don’t underestimate what these machines can do. A mini PC can handle light coding, watching tutorial videos, or even some casual gaming. If you’re comfortable working on it directly, it can pull double duty as both your dev box and your server.
 
-- **Remote access still works**  
-    Worried that moving to a mini PC means you can only use it when you’re at home? Don’t be. Once we set up SSH and a few other tools later on, you’ll be able to connect to it remotely just like you would with a cloud VM.
+- **The data is yours**  
+    With a mini PC, your files, apps, and databases live on hardware you own. You’re not trusting a third-party provider with your data or worrying about surprise lockouts or sudden service shutdowns. You own the machine, so you own the data.
 
-In short, a mini PC gives you the power of a server without the monthly bills of cloud hosting, while still keeping that personal, “this is mine” feeling.
+- **Small footprint**  
+    Mini PCs are compact and energy-efficient. They don’t take up much desk space, don’t sound like jet engines, and don't hurt your electricity bill.
+
+In short, a mini PC gives you the power of a server without the monthly bills of cloud hosting, while still keeping that personal feeling that you own it.
 
 ## Raspberry Pis
 Another very popular option for self-hosting is the Raspberry Pi. It’s small, compact, and extremely versatile. Beyond DevOps or self-hosting, it has GPIO pins that let you experiment with electronics, sensors, and DIY projects, making it a favorite for tinkerers and hobbyists.
@@ -27,7 +30,6 @@ Another very popular option for self-hosting is the Raspberry Pi. It’s small, 
 That said, if your main goal is just to deploy and run personal projects, a mini PC is often the better deal. For roughly the same price, you’ll get more raw performance, more memory, and a smoother experience running multiple apps. Raspberry Pis are great for learning and experimentation, but mini PCs are better suited for being your “always-on” workhorse.
 
 ## Old PCs / Laptops
-
 Don’t overlook old PCs / laptops you already have lying around. If you’re not using one anymore, it can easily be repurposed as a self-hosting server. Simply install Linux, strip away the unnecessary bloat, and you’ll have a machine that can run containers, host apps, and even provide built-in battery backup during short power outages.
 
 It might not be as power-efficient or compact as a mini PC, but if you already own one, it’s basically a free way to start self-hosting.

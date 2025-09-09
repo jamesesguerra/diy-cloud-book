@@ -32,10 +32,15 @@ Here’s what we’ll cover:
 Just as important as what we’ll cover is what this book won’t try to do.
 
 - **Not a full Docker course**  
-    I won’t re-teach Docker from scratch. If you’re already familiar with containers—even at a beginner level—you’ll be fine. If not, a quick Docker tutorial will give you the foundation you need.
+    I won’t re-teach Docker from scratch. If you’re already familiar with containers—even at a beginner level—you’ll be fine. If not, going through a beginner Docker course [^1] will give you the foundation you need.
 - **Not a Linux command guide**  
-   While you’ll inevitably touch the Linux terminal, this isn’t the place to master shell commands. There are far better resources for learning Linux deeply.
+   While you’ll inevitably touch the Linux terminal, this isn’t the place to master shell commands. There are far better resources [^2] for learning Linux.
+- **Not networking basics**  
+    Basic networking concepts (and Docker networking) aren’t covered here. While you can get by without them, not knowing the fundamentals can make troubleshooting frustrating.
 - **Not enterprise-scale DevOps**  
     We’ll focus on lightweight, practical setups that work for indie developers, hobbyists, and small projects. This isn’t a Kubernetes handbook. We won't even be using Kubernetes, just Docker Swarm.
 - **Not a security Bible**  
     We’ll implement reasonable security practices, but this isn’t a penetration testing or advanced ops book. Think “safe enough for personal projects,” not “hardened enterprise infrastructure.”
+
+[^1]: [Complete Docker Course by DevOps Directive](https://www.youtube.com/watch?v=RqTEHSBrYFw)
+[^2]: [Learn Linux - The Full Course by Boot dev](https://www.youtube.com/watch?v=v392lEyM29A)
