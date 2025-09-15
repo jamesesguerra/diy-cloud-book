@@ -26,11 +26,12 @@
 # Making It Public
 - [Why not port-forward?](./chapter-4/no-port-forward.md)
 - [Cloudflare Tunnels](./chapter-4/cloudflare-tunnels.md)
-- [Setting up a Cloudflare account + DNS](./chapter-4/cloudflare-account-and-dns.md)
+- [Setting up a Cloudflare account + Domain](./chapter-4/cloudflare-account-and-domain.md)
 - [Creating a Cloudflare Tunnel](./chapter-4/cloudflare-tunnel-setup.md)
-- [Free SSL via Cloudflare](./chapter-4/free-ssl.md)
+- [Section Recap](./chapter-4/section-recap.md)
 
 # Hosting All the Things
+- [Hello, Tunnel!](./chapter-5/hello-tunnel.md)
 - [Databases](./chapter-5/databases.md)
   - [Connecting locally](./chapter-5/databases-local.md)
 - [Hosting APIs via Docker Swarm](./chapter-5/apis-docker-swarm.md)

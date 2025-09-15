@@ -12,6 +12,14 @@ To give the new user rights to use sudo, run the following command as root:
 usermod --append --groups sudo <user> // give that new user rights to use sudo
 ```
 
+If you're using a VM, the platform most likely added the SSH public key to the root user's `.ssh` folder. We also need to add it to the new user's `.ssh` folder or else we can't log in as that new user. We can simply create the `.ssh` folder, copy the `authorized_keys` file of root to this new folder, and set the proper permissions and owner.
+
+```sh
+mkdir -p /home/<user>/.ssh && chmod 700 /home/<user>/.ssh
+sudo chmod 600 /home/<user>/.ssh/authorized_keys
+sudo chown -R <user>:<user> /home/<user>/.ssh
+```
+
 ## Firewall
 We’ll use [Uncomplicated Firewall (UFW)](https://wiki.ubuntu.com/UncomplicatedFirewall) for our firewall. It’s not an advanced, feature-rich solution, but a mere wrapper around iptables that just filter traffic based on some rules we set.
 

@@ -13,8 +13,8 @@ Who this book is for:
 By the end of this book, you’ll have the confidence to host your own projects and make them publicly accessible, all without spending a fortune.
 
 ## What this book isn't
-This book is not a hardcore, exhaustive guide to self-hosting. If you’re looking for a detailed reference on your preferred Linux distribution, Proxmox setup, or advanced cloud orchestration tool, this isn’t that book — and that’s okay.
+This book is not a hardcore, exhaustive guide to self-hosting. If you’re looking for a detailed reference on your preferred Linux distribution, Proxmox setup, or advanced cloud orchestration tool, this isn’t that book, and that’s okay.
 
-The approach here reflects what I’ve found easiest as a beginner: a practical, straightforward way to get your projects online without getting bogged down in every technical detail. Think of it as a stepping stone: you’ll learn enough to host and showcase your projects confidently, and later, if you discover a tool or setup that suits you better, you’ll have the foundation to switch over with minimal friction.
+The approach here reflects what I’ve found easiest as a beginner: a practical, straightforward way to get your projects online without getting bogged down in every technical detail. Think of it as a stepping stone: you’ll learn enough to host and showcase your projects confidently, and later, if you discover a tool or setup that suits you better, you’ll have the foundation to switch over with minimal effort.
 
-The goal is to get you started, not overwhelm you, so you can focus on building and sharing your projects without frustration.
+The goal is to get you started, not overwhelm you, so you can focus on building and sharing your projects without frustration. I did my best to choose solutions that worked for me at the time. There may be better options for some of the technologies I cover, but once you’ve gone through the book you’ll be able to swap them out yourself.

@@ -36,7 +36,10 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo usermod -aG docker $USER
 ```
 
-5. Restart the PC if still not working.
+5. Restart the machine if still not working.
+```sh
+sudo reboot
+```
 
 6. Check Docker version (client and server), as well as Docker info
 ```sh
@@ -50,12 +53,13 @@ Docker Swarm helps us overcome the limitations of running plain Docker container
 - scale instances up / down
 - replace containers without downtime
 - manage and access secrets
+- run workloads on multiple nodes
 
 In short, Swarm is Docker’s built-in clustering solution. It’s beginner-friendly and easier to get started with than Kubernetes, though less feature-rich.
 
-It isn’t enabled by default, so the first step is to initialize Swarm mode to create a single-node swarm:
+It isn’t enabled by default, so the first step is to initialize Swarm mode to create a single-node swarm. We also wanna use the `--advertise-addr` flag to specify an IP address that other nodes can use to join the swarm.
 ```sh
-docker swarm init
+docker swarm init --advertise-addr <ip-address>
 ```
 
 [^1]: [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)

@@ -9,4 +9,4 @@ In this section, we:
 
 Here’s a simple diagram of our VM to give a visual sense of what we’ve set up so far. From now on, I’ll expand this diagram at the end of each section to help you see how all the pieces fit together as we progress.
 
-![Diagram 1](../images/chapter-3.png)
+![Figure 1](../images/chapter-3.png)
