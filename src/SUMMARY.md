@@ -33,7 +33,7 @@
 # Hosting All the Things
 - [Hello, Tunnel!](./chapter-5/hello-tunnel.md)
 - [Databases](./chapter-5/databases.md)
-  - [Connecting locally](./chapter-5/databases-local.md)
+  - [Exposing Postgres for Local Access](./chapter-5/databases-local.md)
 - [Hosting APIs via Docker Swarm](./chapter-5/apis-docker-swarm.md)
 - [Using a reverse proxy](./chapter-5/reverse-proxy.md)
 - [Scaling until maxing out CPU](./chapter-5/scaling.md)

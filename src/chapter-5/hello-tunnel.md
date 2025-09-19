@@ -24,4 +24,8 @@ Once that works, open `tunnel.<domain>` in your browser, and you should see the 
 ![Figure 1](../images/hello-tunnel-2.jpg)
 
 
-Great, we’ve successfully exposed a web server and routed traffic to it, all without poking a hole through our home network. From here, the possibilities really open up.
+Great, we’ve successfully exposed a web server and routed traffic to it, all without poking a hole through our home network. From here, the possibilities really open up. But before anything else, run the following command to stop and remove the Nginx container.
+
+```sh
+docker rm -f nginx
+```

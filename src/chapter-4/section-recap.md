@@ -9,6 +9,6 @@ It begins with the domain name we registered. When we type that domain into a br
 
 Next, Cloudflare checks the subdomain, in our case, `tunnel.<domain>`. When we created the public hostname earlier, Cloudflare automatically set up a CNAME DNS record for us. This record points `tunnel.<domain>` to the unique hostname of our Cloudflare Tunnel, ensuring the request is routed through the correct tunnel.
 
-Finally, the traffic reaches our host machine. For this chapter, I’ve zoomed in on the server diagram from the previous section to show the components inside. The cloudflared agent, running on the host, maintains a secure outbound connection to Cloudflare’s tunnel service. When a request comes through, cloudflared receives it and forwards it to the local destination we specified during setup, in this case, a service running at `http://localhost:80`.
+Finally, the traffic reaches our host machine. For this chapter, I’ve zoomed in on the server diagram from the previous section to show the components inside. The cloudflared agent, running on the host, maintains a secure outbound connection to Cloudflare’s tunnel service. When a request comes through, cloudflared receives it and forwards it to the local destination we specified during setup. In this case, I told the agent to route traffic from `tunnel.james-esg.com` to a service running at `http://localhost:80`.
 
 ![Figure 1](../images/chapter-4.png)
