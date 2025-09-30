@@ -32,11 +32,14 @@
 
 # Hosting All the Things
 - [Hello, Tunnel!](./chapter-5/hello-tunnel.md)
+- [Introducing Our Sample App](./chapter-5/intro-sample-app.md)
 - [Databases](./chapter-5/databases.md)
-  - [Exposing Postgres for Local Access](./chapter-5/databases-local.md)
-- [Hosting APIs via Docker Swarm](./chapter-5/apis-docker-swarm.md)
-- [Using a reverse proxy](./chapter-5/reverse-proxy.md)
-- [Scaling until maxing out CPU](./chapter-5/scaling.md)
+  - [Exposing for Local Access](./chapter-5/databases-local.md)
+- [APIs](./chapter-5/apis.md)
+- [Connecting Services with Docker Networking](./chapter-5/connecting-services.md)
+- [Docker Swarm](./chapter-5/docker-swarm.md)
+- [Reverse Proxies](./chapter-5/reverse-proxies.md)
+- [Object Storage](./chapter-5/object-storage.md)
 
 # Developer’s Playground
 - [Deploying pet projects](./chapter-6/deploying-pet-projects.md)
@@ -48,6 +51,7 @@
 
 # Beyond the Basics
 - [Monitoring and logging](./chapter-7/monitoring-logging.md)
+- [Caching](./chapter-7/caching.md)
 - [What else to host?](./chapter-7/what-else-to-host.md)
 
 # Wrapping Up

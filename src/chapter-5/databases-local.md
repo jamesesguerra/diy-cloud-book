@@ -1,4 +1,4 @@
-# Exposing Postgres for Local Access
+# Exposing for Local Access
 If Adminer isn’t your thing (I wouldn’t blame you, it can feel pretty clunky at first), you can connect to the self-hosted database using a tool like DBeaver, TablePlus, or any other SQL client. This assumes that you're hosting on a mini PC though, or that you can connect with another device.
 
 To make this possible, we need to expose the Postgres container’s port so it’s reachable outside of Docker. This is done by adding a `ports` section to your Compose file. Forward host port `5432` to the container’s `5432` (Postgres’s default port). You can also remove the `adminer` service since we won’t need it anymore.
@@ -28,7 +28,7 @@ You can quickly verify that the container is reachable with:
 curl localhost:1433
 ```
 
-If you see  `curl: Empty reply from server`, this is actually a good thing. t means the connection works; Postgres just doesn’t speak HTTP. However, if you see `curl: Failed to connect to localhost port 5432`, then something's wrong. Double-check your compose file and restart.
+If you see  `curl: Empty reply from server`, this is actually a good thing. It means the connection works; Postgres just doesn’t speak HTTP. However, if you see `curl: Failed to connect to localhost port 5432`, then something's wrong. Double-check your compose file and restart.
 
 ## Exposing through Cloudflare
 Now that your DB port is exposed locally, we can make it accessible remotely. Head back to the **Zero Trust Dashboard** and publish a new application route. This time, instead of setting the **Service Type** to `HTTP`, choose `TCP`, since databases don’t respond to HTTP traffic.
@@ -60,7 +60,7 @@ For my Host, enter `localhost`, then fill in the same credentials as before.
 
 ![Figure 2](../images/connecting-locally-2.png)
 
-Click **Test Connection** to make sure everything is working. If the test succeeds, click **Finish**. You should now be able to run queries against your server in a friendlier, more familiar interface.
+Click **Test Connection** to make sure everything is working. If the test succeeds, click **Finish**. You should now be able to run queries against your server in a friendlier, more familiar interface. And because I’m used to just typing queries in an editor, I’ll take the time to enter my `CREATE TABLE` statement for our `Note` table.
 
 ![Figure 3](../images/connecting-locally-3.jpg)
 

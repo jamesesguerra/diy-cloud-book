@@ -6,7 +6,7 @@ For a while, that was enough. But when Heroku’s free tier ended in November 20
 
 Around the same time, I landed a job as a software engineer working with .NET and SQL Server. Suddenly, I had a new problem: most PaaS platforms catered to Node.js or Python apps, with PostgreSQL as the default database. Finding a service that supported .NET out of the box was pretty challenging.
 
-I gave those platforms a shot, but another issue surfaced: network latency. From my country (the Philippines), connecting to their servers felt sluggish. That pushed me to try Azure, since I was already using it at work. Azure App Service was honestly great and super easy to set up (I even wrote an [article](https://medium.com/@jamesesguerra025/how-to-deploy-a-net-api-for-free-on-azure-787e95424f0a) about it). The catch, though, was the database pricing. I built a small app for my mom’s job, and even though it didn’t store much data, my Azure SQL bill ballooned to around ₱1,000 (~17 USD) a month. For a side project I wanted to host for free, that felt like burning money.
+I gave those platforms a shot, but another issue surfaced: network latency. From my country (the Philippines), connecting to their servers felt sluggish. That pushed me to try Azure, since I was already using it at work. Azure App Service was honestly great and super easy to set up (I even wrote an [article](https://medium.com/@jamesesguerra025/how-to-deploy-a-net-api-for-free-on-azure-787e95424f0a) about it). The catch, though, was the database pricing. I built a small app to help my mom with her job, and even though it didn’t store much data, my Azure SQL bill ballooned to around ₱1,000 (~17 USD) a month. For a side project I wanted to host for free, that felt like burning money.
 
 That frustration led me deeper into DevOps. In September 2024, I bought a mini PC and dove into the world of self-hosting. I saw people online running setups I could barely comprehend. Jellyfin, Nextcloud, Home Assistant, you name it. I started smaller, hosting apps like Glance, Jellyfin, Nginx Proxy Manager, Gitea, and even my own self-hosted runners, all managed with Docker Swarm.
 
@@ -14,4 +14,4 @@ It was addictive. So I soon thought, if I can host all this infrastructure mysel
 
 From there, I began piecing together a simple architecture, one where my projects could safely connect to the different services on my mini PC without me constantly worrying about breaking something.
 
-And that’s how this book came to be: the result of documenting that journey, so other budget-conscious developers like me can build their own little cloud at home.
+And that’s how this book came to be: the result of documenting that journey, so other budget-conscious developers like me can build their own little cloud at home that can host their projects.

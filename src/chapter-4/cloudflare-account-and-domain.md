@@ -1,7 +1,7 @@
 # Setting up a Cloudflare account + Domain
 
 ## Why Cloudflare?
-First, I have to mention why I chose to register my domain with Cloudflare. It's mainly because it gives me free, automatic HTTPS out of the box. That means the moment I map a service to my domain, Cloudflare issues and manages SSL/TLS certificates for me, with no manual setup or renewal required. For a DIY setup where I can't be bothered fiddling with Let’s Encrypt or OpenSSL (yes, there are tools to make it easier, but nothing beats doing nothing) configuration, this is a huge win. Managing your own certificates and dealing with HTTPS in general can quickly become a headache and a roadblock for beginners.
+First, I have to mention why I chose to register my domain with Cloudflare. It's mainly because it gives me free, automatic HTTPS out of the box. That means the moment I map a service to my domain, Cloudflare issues and manages SSL/TLS certificates for me, with no manual setup or renewal required. For a DIY setup where I can't be bothered fiddling with Let’s Encrypt or OpenSSL configuration, this is a huge win (yes, there are tools to make it easier, but nothing beats doing nothing). Managing your own certificates and dealing with HTTPS in general can quickly become a headache and a roadblock for beginners.
 
 Another advantage is that since we’ll be using Cloudflare Tunnels, registering the domain with Cloudflare simplifies everything. All configuration changes can be handled from a single dashboard, reducing context-switching and making management much smoother.
 
