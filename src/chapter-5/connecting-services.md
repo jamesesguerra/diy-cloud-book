@@ -9,7 +9,7 @@ docker logs notely-api
 
 At this point, beginners might be stumped: *Why did this work when we were running the API locally, but not now that it’s inside a container?*
 
-The reason is that when we ran the .NET API directly on our machine, it could access the database on `localhost` because both processes were on the same network — technically, the API process on our machine was just proxying requests to the actual database process running on our VPS. 
+The reason is that when we ran the .NET API directly on our machine, it could access the database on `localhost` because both processes were *technically* on the same network. I say "technically" because the `cloudflared` process on our machine was just proxying requests to the actual database process running on our VPS. 
 
 However, once we containerized the API, it now runs inside its own isolated Docker network. Inside the container, `localhost` refers to the container itself, not the host machine where the database is running. Don't worry if this sounds confusing at first, this still trips me up to this day :).
 
