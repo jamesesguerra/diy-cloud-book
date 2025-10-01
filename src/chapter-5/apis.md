@@ -2,15 +2,17 @@
 
 Now that we have our database, it’s time to host the REST API that our UI can communicate with.
 
-![Figure 1](../images/apis-1.jpg)
-
 The API has just three endpoints:
 - `GET /notes` – retrieves all notes
 - `POST /notes` – adds a new note
 - `DELETE /note/{id}` – deletes the note with the specified ID
 
+I've added some test data to the database to test the endpoints properly. Calling the `GET /notes` endpoint returns:
+
+![Figure 1](../images/apis-2.jpg)
+
 ## Database Connection
-To connect to the database initially, I hardcoded a Postgres connection string in my **appsettings** and used it at runtime. This approach is not secure since it exposes sensitive data in source control. We’ll address how to secure this in a later section.
+To connect to the database initially while developing the API on my local, I hardcoded a Postgres connection string in my **appsettings** and used it at runtime. This approach is not secure since it exposes sensitive data in source control. We’ll address how to secure this in a later section.
 
 ```json
 "ConnectionStrings": {
@@ -29,7 +31,7 @@ I’ve included the Dockerfile I created for the `notely-api` project below. It 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 5228
+EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -55,9 +57,9 @@ Let's break down what this does into steps:
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 5228
+EXPOSE 8080
 ```
-This stage defines the runtime environment for our API. We start with Microsoft’s official ASP.NET 8.0 runtime image, set /app as the working directory, and expose port 5228, which is the port our API will run on inside the container.
+This stage defines the runtime environment for our API. We start with Microsoft’s official ASP.NET 8.0 runtime image, set /app as the working directory, and expose port `8080`, which is the port our API will run on inside the container.
 
 2. **Build Stage**
 ```dockerfile
@@ -100,8 +102,12 @@ You can replace the repository and image name with whatever naming convention yo
 
 ## Running the Container
 
-Once the image is built, you can start a container from it. The command below runs the container, maps port 5228 inside the container to port 5228 on your host, and gives it a friendly name:
+Once the image is built, you can start a container from it. The command below runs the container, maps port `8080` inside the container to port `8080` on my host, and gives it a friendly name:
 
 ```sh
-docker run -d -p 5228:5228 --name notely-api jamesesguerra025/notely-api
+docker run -d -p 8080:8080 --name notely-api jamesesguerra025/notely-api
 ```
+
+For this demo, I’ve exposed the Swagger UI in the production build to make it easy to confirm that the API is working. By opening `http://localhost:8080` in a browser, I'm able to see the Swagger UI page and verify that port-forwarding is set up correctly and the API is running.
+
+![Figure 2](../images/apis-1.jpg)
