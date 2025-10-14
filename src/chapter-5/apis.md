@@ -111,3 +111,8 @@ docker run -d -p 8080:8080 --name notely-api jamesesguerra025/notely-api
 For this demo, I’ve exposed the Swagger UI in the production build to make it easy to confirm that the API is working. By opening `http://localhost:8080` in a browser, I'm able to see the Swagger UI page and verify that port-forwarding is set up correctly and the API is running.
 
 ![Figure 2](../images/apis-1.jpg)
+
+## Exposing through Cloudflare
+After running the `docker run` command in our VM, we can expose it through Cloudflare once again. Head back to the **Zero Trust Dashboard** and publish a new application route for it.
+
+![Figure 3](../images/apis-3.jpg)

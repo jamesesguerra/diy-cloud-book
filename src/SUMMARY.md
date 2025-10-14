@@ -38,6 +38,7 @@
 - [APIs](./chapter-5/apis.md)
 - [Connecting Services with Docker Networking](./chapter-5/connecting-services.md)
 - [Docker Swarm](./chapter-5/docker-swarm.md)
+  - [Moving to Docker Swarm](./chapter-5/moving-to-docker-swarm.md)
 - [Reverse Proxies](./chapter-5/reverse-proxies.md)
 - [Object Storage](./chapter-5/object-storage.md)
 

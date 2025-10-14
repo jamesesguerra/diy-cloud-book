@@ -2,6 +2,10 @@
 
 Now that we have the API container up and running, let’s try calling an endpoint that connects to our database service.
 
+```sh
+curl https://tunnel.james-esg.com/notely-api/notes
+```
+
 Instead of a successful response, we get an error. When we check the logs of the API container with the docker logs command, we can see that it’s unable to connect to the database service.
 ```sh
 docker logs notely-api
@@ -66,4 +70,12 @@ networks:
   home:
     external: true
 ```
+
+Now we can run `docker compose up -d` once again to spin up the services. If all goes well, the API should now be able to communicate with the DB service.
+
+A quick way to check this is by running `docker logs` on the API container. If there are no exceptions indicating that it couldn’t connect to the database, that means it’s successfully communicating through the Docker network as expected.
+
+To fully verify, we can run curl `localhost:8080/notes` or `https://tunnel.james-esg.com/notely-api/notes`, which should return the list of note records.
+
+
 
