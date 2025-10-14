@@ -18,3 +18,6 @@ This book is not a hardcore, exhaustive guide to self-hosting. If you’re looki
 The approach here reflects what I’ve found easiest as a beginner: a practical, straightforward way to get your projects online without getting bogged down in every technical detail. Think of it as a stepping stone: you’ll learn enough to host and showcase your projects confidently, and later, if you discover a tool or setup that suits you better, you’ll have the foundation to switch over with minimal effort.
 
 The goal is to get you started, not overwhelm you, so you can focus on building and sharing your projects without frustration. I did my best to choose solutions that worked for me at the time. There may be better options for some of the technologies I cover, but once you’ve gone through the book you’ll be able to swap them out yourself.
+
+## About Me
+I'm James. I’m not a professional systems / DevOps engineer. I'm just an amateur who enjoys breaking things, fixing them, and learning from the process. I’ve always been fascinated by DevOps technologies and how all the moving parts of an application come together behind the scenes. Over time that curiosity, combined with my frustration over the high cost of public clouds, turned into a hobby of self-hosting my own apps, experimenting with Docker, and building small setups that feel like my own personal cloud.

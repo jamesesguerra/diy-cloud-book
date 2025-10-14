@@ -43,9 +43,9 @@
 
 # Developer’s Playground
 - [Deploying pet projects](./chapter-6/deploying-pet-projects.md)
-  - [CI/CD with Docker Hub](./chapter-6/ci-cd-docker-hub.md)
+  - [CI/CD with GitHub Actions](./chapter-6/ci-cd-github-actions.md)
   - [Automating updates in Docker Swarm](./chapter-6/auto-updates-swarm.md)
-  - [Angular frontend on GitHub](./chapter-6/angular-github.md)
+  - [Hosting frontends on Vercel](./chapter-6/vercel-frontends.md)
 - [Dev & prod connections](./chapter-6/dev-prod-connections.md)
 - [Backups with rclone](./chapter-6/backups-rclone.md)
 
