@@ -32,7 +32,7 @@ Here’s what we’ll cover:
 Just as important as what we’ll cover is what this book won’t try to do.
 
 - **Not a full Docker course**  
-    I won’t re-teach Docker from scratch. If you’re already familiar with containers—even at a beginner level—you’ll be fine. If not, going through a beginner Docker course [^1] will give you the foundation you need.
+    I won’t re-teach Docker from scratch. If you’re already familiar with containers, even at a beginner level, you’ll be fine. If not, going through a beginner Docker course [^1] will give you the foundation you need.
 - **Not a Linux command guide**  
    While you’ll inevitably touch the Linux terminal, this isn’t the place to master shell commands. There are far better resources [^2] for learning Linux.
 - **Not networking basics**  

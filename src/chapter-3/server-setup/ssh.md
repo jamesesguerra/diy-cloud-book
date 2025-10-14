@@ -1,5 +1,5 @@
 # SSH
-If you’re running your server on a mini PC, setting up SSH is optional but super convenient—it lets you access the machine from any other device on your local network without needing to sit in front of it. On the other hand, if you’re using a VM, SSH is pretty much the default way to connect, so you’ll likely already have it in place.
+If you’re running your server on a mini PC, setting up SSH is optional but super convenient. It lets you access the machine from any other device on your local network without needing to sit in front of it. On the other hand, if you’re using a VM, SSH is pretty much the default way to connect, so you’ll likely already have it in place.
 
 Here's how I set it up on my machine following a guide [^1] from DigitalOcean.
 
