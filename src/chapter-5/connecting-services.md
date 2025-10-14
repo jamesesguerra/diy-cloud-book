@@ -17,5 +17,53 @@ There are two ways around this:
 
 1. The quick hack – use `host.docker.internal` instead of localhost to reference the host machine’s network from inside the container
 
-2. The proper solution (what we’ll use) – run the API container in the same custom Docker network as the database service. This way, the API can reach the database directly using its service name, taking advantage of Docker’s built-in DNS and networking features
+2. The better solution (what we’ll use) – run the API container in the same custom Docker network as the database service. This way, the API can reach the database directly using its service name, taking advantage of Docker’s built-in DNS and networking features
+
+To do this solution, we'll need to create a new Docker network since the default bridge network doesn't have this DNS superpower. This command creates a network called `home` using the default `bridge` driver.
+
+```sh
+docker network create home 
+```
+
+Once we have our new network created, the first thing we can do is use the service name of our DB in place of `localhost` in our database connection string. And build a new image after making this edit.
+
+```json
+"ConnectionStrings": {
+    "DefaultConnection": "Host=db;Port=5432;Database=postgres;Username=postgres;Password=postgres"
+}
+```
+
+Next, we need to have both our database service and our API service to run in our `home` Docker network.
+
+To do that, we can just add our API service to the Compose file we made earlier for our DB service. They can be in separate Compose files if you want, but I generally like to have all services in the same network inside the same file.
+
+We then add a `networks` section and tell Docker that we want the services to be in our `home` network. We say `external: true` because we want Docker to know that we've already created a Docker network called `home` and so it won't make a new one.
+
+```yml
+services:
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - home
+
+  notely-api:
+    image: jamesesguerra025/notely-api
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - home
+
+networks:
+  home:
+    external: true
+```
 

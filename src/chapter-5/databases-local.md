@@ -4,7 +4,8 @@ If Adminer isn’t your thing (I wouldn’t blame you, it can feel pretty clunky
 To make this possible, we need to expose the Postgres container’s port so it’s reachable outside of Docker. This is done by adding a `ports` section to your Compose file. Forward host port `5432` to the container’s `5432` (Postgres’s default port). You can also remove the `adminer` service since we won’t need it anymore.
 
 ```yml
-db:
+services:
+  db:
     image: postgres
     restart: always
     shm_size: 128mb
@@ -14,6 +15,8 @@ db:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 ```
 
 After saving, restart your services:
