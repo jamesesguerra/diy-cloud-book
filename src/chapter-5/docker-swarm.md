@@ -16,23 +16,23 @@ In Swarm mode, we’ll be using something called a Docker Stack. It’s very sim
 ### 1. Cluster-Wide Replication
 If needed, you can replicate container instances to achieve horizontal scaling. While Compose supports scaling as well, it only works on a single host. The advantage of Swarm replication is that it distributes replicas across multiple nodes, even on different machines. This provides better availability and reliability with no single point of failure. This might be overkill for smaller projects, but it’s still worth setting up for the added resilience if your memory allows it.
 
-### 1. Built-in load balancing with replicas
+### 2. Built-in load balancing with replicas
 In Docker Compose, if you scale your app to multiple containers, you’ll usually need an external load balancer (like Nginx or Traefik) to distribute traffic between them.
 
 Swarm does this for you automatically. So when you deploy a service with multiple replicas, it exposes it as one single endpoint and load balances requests across all replicas. This is made possible by Swarm’s overlay network, which connects containers across nodes and routes traffic between them through a built-in virtual network layer.
 
-### 2. Self-Healing
+### 3. Self-Healing
 Another powerful feature of Swarm is its ability to automatically recover from container failures. You can configure how Swarm should respond when a container exits unexpectedly using a restart policy. 
 
-### 3. Blue-Green Deployments
+### 4. Blue-Green Deployments
 This might not be a big deal if your app doesn't have much users yet, but it's still worth mentioning. Blue-green deployments let you roll out updates more safely through rolling updates. This makes it so that new containers are started before the old ones are stopped, allowing you to test and switch over smoothly. With blue-green setups, both versions can run side by side, and you can easily roll back to the previous one if something goes wrong.
 
-### 4. Secrets Management
+### 5. Secrets Management
 Up until now, we’ve hardcoded things like our database connection strings directly in the environment variables section. This obviously isn't good from a security standpoint, but I did this intentionally to show how we can address it with Docker Swarm secrets.
 
 Basically, you can store credentials, API keys, and any other secret, securely in the Swarm cluster and just inject them into a container at runtime.
 
-### 5. Automatic Rollbacks
+### 6. Automatic Rollbacks
 If an update fails, Swarm can automatically rollback to the last working version. This is incredibly helpful when testing new features or making big changes to your deployment.
 
 ## Why Not Kubernetes?
