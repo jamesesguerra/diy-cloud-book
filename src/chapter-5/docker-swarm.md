@@ -36,9 +36,9 @@ Basically, you can store credentials, API keys, and any other secret, securely i
 If an update fails, Swarm can automatically rollback to the last working version. This is incredibly helpful when testing new features or making big changes to your deployment.
 
 ## Why Not Kubernetes?
-You’ve probably heard of Kubernetes. Yes, it’s way more powerful and has more features than Docker Swarm. But for most pet projects or small self-hosted apps, it’s complete overkill. In fact, you probably don’t even need Swarm. Docker Compose alone is often more than enough.
+You’ve probably heard of Kubernetes. Everyone has. Yes, it’s way more powerful and has more features than Docker Swarm. But for most pet projects or small self-hosted apps, it’s complete overkill. In fact, you probably don’t even need Swarm. Docker Compose alone is often more than enough.
 
-That said, I still think Swarm is worth adding because of how easy it is to set up. You get simple scaling, load balancing, and self-healing, all without the steep learning curve that comes with Kubernetes.
+That said, I still think Swarm is worth adding because of how easy it is to set up. You get simple scaling, load balancing, and self-healing, all with a simple command and without the steep learning curve that comes with Kubernetes.
 
 Kubernetes definitely has its place in large-scale or enterprise environments where teams manage complex, distributed systems. But for personal or small-scale deployments, it’s a whole 'nother beast that’ll just slow us down from getting our projects up and running quickly.
 
