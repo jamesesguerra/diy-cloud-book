@@ -5,6 +5,8 @@ If you’re not familiar with what a [reverse proxy](https://www.cloudflare.com/
 
 There are plenty of reasons to use a reverse proxy, but in our case, we’re doing it so we only need to publish one application route on the Cloudflare dashboard. That single route will forward requests to our reverse proxy, which can then decide, based on the URL path, which service in our Docker network to send them to.
 
+However, it’s worth noting that Nginx is not designed to proxy database requests. While it can handle raw TCP streams, it doesn’t understand database protocols like PostgreSQL. That’s why for our database service, we still need to keep its published application route in Cloudflare instead of routing it through Nginx.
+
 ## Why Nginx?
 For our reverse proxy, I’m choosing to use Nginx. It’s one of if not the most popular technologies that can act as a web server, reverse proxy, load balancer, and content cache all at once. It’s been around for years, with tons of documentation and tutorials available online.
 
@@ -81,11 +83,6 @@ location = /50x.html {
 ```
 
 Finally, we add a `location` directive for our Notely API. 
-
-This `location` directive tells Nginx to forward any requests that start with `/notely-api/` to the `notely-api` service running on port `8080`. Once again, we can take advantage of Docker’s built-in DNS capabilities, allowing us to refer to our API by its service name instead of using a hardcoded IP address.
-
-Then the `proxy_set_header` lines ensure that important client and request information (such as the original host, IP address, and protocol) are passed along to our API service.
-
 ```nginx
 location /notely-api/ {
     proxy_pass http://notely-api:8080/; 
@@ -95,6 +92,11 @@ location /notely-api/ {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 ```
+
+This `location` directive tells Nginx to forward any requests that start with `/notely-api/` to the `notely-api` service running on port `8080`. Once again, we can take advantage of Docker’s built-in DNS capabilities, allowing us to refer to our API by its service name instead of using a hardcoded IP address.
+
+Then the `proxy_set_header` lines ensure that important client and request information (such as the original host, IP address, and protocol) are passed along to our API service.
+
 
 ### Creating the Dockerfile
 Now that our custom Nginx configuration is ready, let’s create a Dockerfile for our image. This part is pretty straightforward. We’ll extend the base Nginx image and copy our custom configuration into it, effectively replacing the default one. First run `touch Dockerfile` and add the contents below:
@@ -118,5 +120,3 @@ And push to Docker Hub:
 ```sh
 docker push jamesesguerra025/nginx
 ```
-
-
