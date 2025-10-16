@@ -7,3 +7,88 @@ I'm choosing MinIO because it's a lightweight yet high performance object storag
 One of its biggest strengths is that it’s fully S3 API compatible, meaning any application or SDK that works with Amazon S3 will also work seamlessly with it. This makes it incredibly easy to integrate into existing apps or migrate workloads without changing your code.
 
 ## Setting up MinIO
+To set it up, let's first add a new MinIO service to our stack. Add the following `minio` service to the `docker-stack.yml` file.
+
+```yml
+minio:
+    image: minio/minio
+    container_name: minio
+    volumes:
+        - ./minio-data:/data
+    environment:
+        - MINIO_ROOT_USER=admin
+        - MINIO_ROOT_PASSWORD=password
+        - MINIO_LICENSE=accept
+        - MINIO_BROWSER_REDIRECT_URL=http://localhost/minio
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+    networks:
+        - home
+```
+
+Notice that we’re using a bind mount instead of a named volume. This makes it much easier to access the MinIO objects directly on the host, so you can manipulate them as regular files, You can copy, compress, or back them up if needed. It needs that folder to start up correctly, so let's create it.
+
+```sh
+mkdir minio-data
+```
+
+Also, there’s no `ports` configuration anymore. With our proxy in place, we don’t need to expose services directly; all traffic will be routed through the `proxy` service from here on.
+
+Lastly, take note of the credentials we’ve set as environment variables; we’ll use these to log in later. You can also update them if you need to. After making any changes, don’t forget to update the stack.
+
+## Routing Traffic to MinIO
+We can route traffic to our new `minio` service simply by creating a new `location` directive in our custom `default.conf` Nginx configuration file.
+
+First, let’s note the ports that MinIO exposes:
+1. `9000` - used to interact with its data API and to store/retrieve objects
+2. `9001` - exposes the web UI (admin dashboard)
+
+Since MinIO exposes two ports, we need to create two corresponding locations in Nginx so it can proxy requests appropriately.
+
+With that in mind, we can follow the same approach we used for the Notely API. Add the following `location` directives under the Notely API block. Here, we're saying we want requests to `/minio` to be routed to the admin dashboard of the `minio` service, and requests to `/blobs` to be routed to its data API.
+
+```nginx
+location /minio/ {
+    proxy_pass http://minio:9001/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
+location /blobs/ {
+    proxy_pass http://minio:9000/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+Rebuild the image and push the updated version to Docker Hub. Once that’s done, redeploy the stack. Afterward, navigate to `https://tunnel.james-esg.com/minio`; you should get redirected to `/minio/login` and see the MinIO login page.
+
+![Figure 1](../images/minio-1.jpg)
+
+Cool, we were able to expose this cool-looking dashboard. Enter the credentials you set earlier in the Stack configuration. Once logged in, you should see the Object Browser, where you can create a bucket to get started. Click the **Create a Bucket** button and give it a name. I'll call mine `notely`. 
+
+After creating the bucket, you’ll be directed to it. The bucket loads its contents (which should be empty), but you might notice that it keeps loading indefinitely. Checking the browser console reveals that a WebSocket connection is failing. This is common, as many dashboards implement real-time features that rely on WebSockets, which are currently unable to connect.
+
+![Figure 2](../images/minio-2.jpg)
+
+The issue is that Nginx needs extra headers to handle WebSocket connections. Add the following headers in the `location` block for the `/minio` path:
+
+```nginx
+location /minio/ {
+    # ...other proxy headers
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "Upgrade";
+}
+```
+
+Afterward, reload the page, and the loading should complete. Click the **Upload** button and try uploading an image. You should see a popup displaying the upload progress, which is especially useful when bulk-uploading files.
+
+![Figure 3](../images/minio-3.jpg)
+
+
+
+
