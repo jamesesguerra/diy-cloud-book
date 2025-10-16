@@ -1,4 +1,4 @@
-# Choosing your software
+# Choosing your OS
 
 Before you even think about apps, services, or Docker containers, you’ll need to pick the foundation your setup will run on: the operating system (OS). For self-hosting, the clear winner is Linux, it’s the backbone of most servers worldwide, and for good reason.
 
@@ -23,13 +23,7 @@ Throughout this book, assume that we're working with a Debian/Ubuntu system. Thi
 
 ### Alternatives (for Advanced Users)
 
-While Debian and Ubuntu are the best place to start, other Linux distributions might catch your interest later:
-
-- **Fedora** – Bleeding-edge, with very up-to-date software. Great if you like having the latest tools, but it requires more maintenance.
-
-- **Arch Linux** – Minimalist and highly customizable. Perfect for power users who want to learn Linux inside out, but not beginner-friendly.
-
-- **Kali Linux** – Tailored for cybersecurity professionals and penetration testers. It comes preloaded with hundreds of security tools, making it great for hacking and security research, but it’s not designed for general self-hosting or daily use.
+While Debian and Ubuntu are the best place to start, other Linux distributions might catch your interest later such as Fedora, Arch Linux, or even Kali Linux.
 
 If you’re just starting, don’t overthink it. Stick with Debian or Ubuntu for now. You can always explore the others once you’re comfortable.
 

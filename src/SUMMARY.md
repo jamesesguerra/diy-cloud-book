@@ -16,7 +16,7 @@
   - [Why a Mini PC for Self Hosting](./chapter-3/self-hosting-setup/mini-pc.md)
   - [Why VMs for Self Hosting](./chapter-3/self-hosting-setup/vm.md)
 - [Choosing your hardware](./chapter-3/choosing-hardware.md)
-- [Choosing your software](./chapter-3/choosing-software.md)
+- [Choosing your OS](./chapter-3/choosing-os.md)
 - [Setting up your Server](./chapter-3/server-setup.md)
   - [Server Hardening](./chapter-3/server-setup/hardening.md)
   - [SSH](./chapter-3/server-setup/ssh.md)
