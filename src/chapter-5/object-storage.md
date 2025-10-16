@@ -118,7 +118,7 @@ docker exec -it <container-id> mc alias set local http://minio:9000 admin passwo
 
 Now, let's make our `notely` bucket public by using the `anonymous` command to manage anonymous access to buckets.
 ```sh
-docker exec -it <container-id> mc  anonymous set public local/notely
+docker exec -it <container-id> mc anonymous set public local/notely
 ```
 
 After running these commands, the bucket should now be publicly accessible. Visiting the image URL again should now successfully serve the uploaded file.
