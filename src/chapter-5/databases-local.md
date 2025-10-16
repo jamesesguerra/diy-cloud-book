@@ -46,7 +46,7 @@ Once installed, authenticate by running:
  cloudflared login
 ```
 
-Then run the following command (replacing the hostname with yours). This opens a local port on your machine that securely forwards traffic through Cloudflare to your Postgres service, allowing tools like DBeaver to connect without needing to know about Cloudflare. Think of it like a proxy: any traffic sent to localhost:5432 will be routed through Cloudflare to your application route.
+Then run the following command (replacing the hostname with yours). This opens a local port on your machine that securely forwards traffic through Cloudflare to your Postgres service, allowing tools like DBeaver to connect without needing to know about Cloudflare. Think of it like a proxy: any traffic sent to `localhost:5432` will be routed through Cloudflare to your application route.
 
 ```sh
 cloudflared access tcp --hostname tunnel.james-esg.com/db --url localhost:5432

@@ -19,10 +19,6 @@ I won’t provide an exhaustive list here (a quick Google search will give you a
 ### Why Debian or Ubuntu
 When it comes to self-hosting, you don’t need to look far: [Debian](https://www.debian.org/) and [Ubuntu](https://ubuntu.com/) are the most popular choices. They’re beginner-friendly, well-documented, and widely supported across hosting guides, tutorials, and community forums. So if you have 0 experience with Linux, Debian / Ubuntu is the perfect start.
 
-- **Debian:** Known for rock-solid stability. Updates are conservative, so you’ll trade slightly older software for fewer surprises and maximum reliability. If you want a “set it and forget it” system, Debian is a safe bet.
-
-- **Ubuntu:** Built on Debian but geared toward user-friendliness. It comes with newer software, better hardware support out of the box, and huge amounts of community documentation. If you’re new to Linux or just want something that “just works,” Ubuntu is hard to beat.
-
 Throughout this book, assume that we're working with a Debian/Ubuntu system. This is because the most servers and tutorials use some Debian-based distro, and the Linux distro I installed on my mini PC is [Linux Mint](https://linuxmint.com/), another beginner-friendly distro built on Ubuntu. If your distro is based on RHEL, you can always look up the equivalent commands / guides, especially since package management and GPG key handling differ.
 
 ### Alternatives (for Advanced Users)
