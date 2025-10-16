@@ -89,6 +89,42 @@ Afterward, reload the page, and the loading should complete. Click the **Upload*
 
 ![Figure 3](../images/minio-3.jpg)
 
+## Exposing MinIO Objects
+### Accessing Uploaded Objects
+Now it’s time to expose the image we just uploaded and test if we can access it from our browser. Recall that we created a separate path configuration, `/blobs`, to access MinIO’s data API. Or in other words, to serve objects.
+
+We should be able to access the image by navigating to `https://tunnel.james-esg.com/blobs` and appending `/<bucket-name>/<object-name>`. For example, our bucket is named `notely` and the file we uploaded is `apple-touch-icon.png`.
+
+However when we enter that URL in the browser, we’re shown what appears to be an XML document with an error. A closer look reveals that we don’t have access to the object.
+
+![Figure 4](../images/minio-4.jpg)
+
+Returning to the dashboard, it becomes clear what’s causing the error: new buckets are private by default. That’s why we can’t access their objects yet.
+
+### Using the MinIO Client (mc) for Access Control
+If you try searching the dashboard for a setting to make a bucket public, you won’t find one. MinIO doesn’t allow access control changes directly from the dashboard. This is because MinIO’s design enforces access control at the API level to help maintain security and consistency across services.
+
+A quick way to configure access control via the API is by using the [MinIO Client](https://github.com/minio/mc). The `minio/minio` container actually already has this installed, so we can just use it through there.
+
+To test it, we can execute the `mc ls` against the MinIO container. This lists down the buckets and objects.
+```sh
+docker exec -it <container-id> mc ls
+```
+
+If that runs successfully, we can add an alias to store our server credentials:
+```sh
+docker exec -it <container-id> mc alias set local http://minio:9000 admin password
+```
+
+Now, let's make our `notely` bucket public by using the `anonymous` command to manage anonymous access to buckets.
+```sh
+docker exec -it <container-id> mc  anonymous set public local/notely
+```
+
+After running these commands, the bucket should now be publicly accessible. Visiting the image URL again should now successfully serve the uploaded file.
+
+![Figure 5](../images/minio-5.jpg)
+
 
 
 
