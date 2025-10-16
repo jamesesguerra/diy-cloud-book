@@ -19,5 +19,104 @@ Nginx is configured by editing its configuration files. To customize them, we ha
 
 Between the two, the first option is much more maintainable in the long run, and that’s what we’ll be using. But I have to mention that the second option is still handy when you just want to test configuration changes quickly.
 
+### Creating a Custom Nginx Image
+Let’s start by creating a directory to keep our configuration file and Dockerfile organized.
+```sh
+mkdir nginx-proxy && cd nginx-proxy
+```
+
+Next, create the Nginx configuration file. Run `touch default.conf` then add the following content to it:
+
+```nginx
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+    
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location /notely-api/ {
+        proxy_pass http://notely-api:8080/; 
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+There's quite a bit to unpack here. But let's start with the `server` block. This block defines a single HTTP server that listens for incoming traffic.
+```conf
+server {
+    ...
+}
+```
+
+Next, we specify which port the server listens on using the `listen` directives. In this configuration, it listens for HTTP traffic on port `80` for both IPv4 and IPv6.
+```nginx
+listen       80;
+listen  [::]:80;
+```
+
+Next, we’ll keep the default `location` directives that come with Nginx. These directives define how requests to different paths are handled. Keeping them makes it easy to verify that Nginx is running properly. We’ll also keep the default error pages for now.
+
+```nginx
+ location / {
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
+}
+
+error_page   500 502 503 504  /50x.html;
+location = /50x.html {
+    root   /usr/share/nginx/html;
+}
+```
+
+Finally, we add a `location` directive for our Notely API. 
+
+This `location` directive tells Nginx to forward any requests that start with `/notely-api/` to the `notely-api` service running on port `8080`. Once again, we can take advantage of Docker’s built-in DNS capabilities, allowing us to refer to our API by its service name instead of using a hardcoded IP address.
+
+Then the `proxy_set_header` lines ensure that important client and request information (such as the original host, IP address, and protocol) are passed along to our API service.
+
+```nginx
+location /notely-api/ {
+    proxy_pass http://notely-api:8080/; 
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+### Creating the Dockerfile
+Now that our custom Nginx configuration is ready, let’s create a Dockerfile for our image. This part is pretty straightforward. We’ll extend the base Nginx image and copy our custom configuration into it, effectively replacing the default one. First run `touch Dockerfile` and add the contents below:
+
+```dockerfile
+FROM nginx
+
+WORKDIR /etc/nginx/conf.d
+
+COPY default.conf .
+```
+
+> Tip: If you wanna minimize memory usage and don’t need convenience tools like `curl` or `vim` inside the container, use the Alpine-based images. They're much smaller and more memory efficient.
+
+Next, build the new image by running the command below. Don’t forget to include your Docker Hub username (or any namespace you’re using) as the prefix.
+```sh
+docker build -t jamesesguerra025/nginx .
+```
+
+And push to Docker Hub:
+```sh
+docker push jamesesguerra025/nginx
+```
 
 
