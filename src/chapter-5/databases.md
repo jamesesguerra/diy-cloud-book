@@ -4,7 +4,13 @@ Now that we’ve shown we can route traffic properly, it’s time to set up and 
 ## Docker Compose Setup
 For this example, we’ll use Postgres, since it’s open source, widely supported, popular, and relatively lightweight compared to other options.
 
-To get started, let’s grab part of the `docker-compose.yml` file from Postgres’ official Docker Hub documentation[^1], then run `docker compose up -d` in the same directory to spin up the services:
+To get started, I like creating an external named volume to persist the database data. I do this because it helps avoid confusion since Docker Compose tends to prefix object names, which can get messy when working with multiple Compose projects or when switching to Docker Swarm.
+
+```sh
+docker volume create postgres-data
+```
+
+Next, let’s grab part of the `docker-compose.yml` file from Postgres’ official Docker Hub documentation[^1], then run `docker compose up -d` in the same directory to spin up the services:
 
 ```yml
 services:
@@ -27,6 +33,7 @@ services:
 
 volumes:
   postgres_data:
+    external: true
 ```
 
 Here’s what this does:

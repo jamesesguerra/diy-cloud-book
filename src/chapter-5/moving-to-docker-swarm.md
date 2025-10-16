@@ -18,3 +18,29 @@ Run the following commands to remove the old network and create a new one for Sw
 docker network rm home
 docker network create --driver overlay home
 ```
+
+After that, we can make our Stack file compliant with the standard format. The only section we need to update is ports, since Stack files use a different syntax.
+
+So intead of:
+```yml
+ports:
+  - "5432:5432"
+```
+
+We write:
+```yml
+  ports:
+    - target: 5432
+      published: 5432
+      protocol: tcp
+      mode: host
+```
+
+This is because Stack deployments require explicit definitions for each port mapping, including the target, published port, protocol, and mode.
+
+To test it out, we can now deploy the stack using the following command. In this case, `home` is the name of the stack:
+
+```sh
+docker stack deploy -c docker-stack.yml home
+```
+
