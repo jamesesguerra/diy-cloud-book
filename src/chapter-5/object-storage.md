@@ -4,7 +4,7 @@ The next thing our app needs is a way to store blobs, objects, and essentially, 
 ## Why MinIO?
 I'm choosing MinIO because it's a lightweight yet high performance object storage solution that’s designed to be simple to deploy and easy to scale. It’s one of the most popular self-hosted alternatives to commercial cloud storage services like Amazon S3 or Azure Blob Storage.
 
-One of its biggest strengths is that it’s fully S3 API compatible, meaning any application or SDK that works with Amazon S3 will also work seamlessly with it. This makes it incredibly easy to integrate into existing apps or migrate workloads without changing your code.
+One of its biggest strengths is that it’s fully S3 API compatible, meaning any application or SDK that works with Amazon S3 will also work seamlessly with it. This makes it really easy to integrate into existing apps or migrate workloads without changing your code.
 
 ## Setting up MinIO
 To set it up, let's first add a new MinIO service to our stack. Add the following `minio` service to the `docker-stack.yml` file.
@@ -12,7 +12,6 @@ To set it up, let's first add a new MinIO service to our stack. Add the followin
 ```yml
 minio:
     image: minio/minio
-    container_name: minio
     volumes:
         - ./minio-data:/data
     environment:
@@ -69,7 +68,7 @@ Rebuild the image and push the updated version to Docker Hub. Once that’s done
 
 ![Figure 1](../images/minio-1.jpg)
 
-Cool, we were able to expose this cool-looking dashboard. Enter the credentials you set earlier in the Stack configuration. Once logged in, you should see the Object Browser, where you can create a bucket to get started. Click the **Create a Bucket** button and give it a name. I'll call mine `notely`. 
+Great, we were able to expose this cool-looking dashboard. Enter the credentials you set earlier in the Stack configuration. Once logged in, you should see the Object Browser, where you can create a bucket to get started. Click the **Create a Bucket** button and give it a name. I'll call mine `notely`. 
 
 After creating the bucket, you’ll be directed to it. The bucket loads its contents (which should be empty), but you might notice that it keeps loading indefinitely. Checking the browser console reveals that a WebSocket connection is failing. This is common, as many dashboards implement real-time features that rely on WebSockets, which are currently unable to connect.
 

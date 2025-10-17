@@ -41,7 +41,7 @@ Head back to the **Zero Trust Dashboard** and publish a new application route fo
 While we're here, we can also delete the application route we made for our Notely API service as well.
 
 ## Testing the Proxy
-Now it’s time to test routing traffic through our proxy. First, navigate to `https://tunnel.james-esg.com/`, the root location we defined in our config, and we  should see the Nginx Welcome Page yet again.
+Now it’s time to test routing traffic through our proxy. First, navigate to `https://tunnel.james-esg.com/`, the root location we defined in our config, and we should see the Nginx Welcome Page yet again.
 
 ![Figure 2](../../images/hello-tunnel-2.jpg)
 
